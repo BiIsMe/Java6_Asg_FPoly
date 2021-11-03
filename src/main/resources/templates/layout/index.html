@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		th:fragment="dynamic(main)">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fjalla+One&family=Lobster&family=Original+Surfer&family=Playfair+Display&display=swap" rel="stylesheet">
+	<title>Insert title here</title>
+	<style>
+		.piccart{
+		    width: 79px;
+		    height: 105px;
+		    overflow: hidden;
+		    margin-bottom: 3px;
+		}
+		img:hover{
+			 transform: scale(1.1);
+   			 transition: 0.5s;}
+	</style>
+</head>
+<body  ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+	<div class="container">
+		<header>
+	        <div class="row">
+	            <img th:src="@{/image/cover/header1.jpg}" style="width:100%;" alt="">
+	        </div>
+	    </header>
+	    
+	    <nav>
+	    	<div th:replace="~{/layout/menu.html}"></div>
+	    </nav>
+
+	    <div class="row mt-2" style="min-height:600px">
+	    	<article class="col-sm-9">
+	    		<div th:replace="${main}"></div>
+	    	</article>
+	    	<aside class="col-sm-3 mt-4">
+	    		<div th:replace="~{/layout/category.html}"></div>
+	    	</aside>
+	    </div>
+	    
+	     <footer class="row mt-4 alert alert-light bg-dark">
+			<div class="col-sm-12 text-center ">
+				XeoXo . All rights reserved.
+			</div>
+		</footer>
+	</div>
+	<script src="/js/shopping-cart-control.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index.html :: dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	    <!--article-->
+    <article class="ml-5">
+            <div class="row">
+                    <div class="row ml-1">
+                        <a class="mr-1" th:href="@{/product/list}">Home </a> /
+                        <p style="color: grey; padding-left: 8px;">[[${item.name}]]</p>
+                    </div>
+
+                    <div class="row">
+                        <!--thumbnail-->
+                        <div class="col-sm-1" style="padding-top: 1px;">
+                           <div class="row justify-content-start" style="height: 103px;">
+                                <div class="col-sm-8">
+                                    <div class="piccart">
+                                        <img th:src="@{|/image/phukien/${item.image}|}" class="img-thumbnail" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start mt-2" style="height: 103px;">
+                                <div class="col-sm-8">
+                                    <div class="piccart">
+                                        <img th:src="@{|/image/phukien/${item.image}|}" class="img-thumbnail" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="row justify-content-start mt-2" style="height: 103px;">
+                                <div class="col-sm-8">
+                                    <div class="piccart">
+                                        <img th:src="@{|/image/phukien/${item.image}|}" class="img-thumbnail" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-start mt-2" style="height: 103px;">
+                                <div class="col-sm-8">
+                                    <div class="piccart">
+                                        <img th:src="@{|/image/phukien/${item.image}|}" class="img-thumbnail" alt="">
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <!--/thumbnail-->
+
+                        <div class="col-sm-4" style="padding-left: 31px;">
+                            <div class="pic" style="height:450px; width: 320px;overflow:hidden">
+                                <img th:src="@{|/image/phukien/${item.image}|}" class="img-thumbnail" style="height:450px;width:320px">
+                            </div>
+                        </div>
+
+                        <!--thông tin-->
+                        <div class="col-sm-6 ml-3" style="padding-left: 110px; font-family: Playfair Display; padding-top: 21px;" >
+                            <div class="row" style="color:rgb(60, 143, 95);">
+                                <h1 style="text-shadow: rgb(237, 238, 173) 2px 2px 1px; font-weight: bold;">[[${item.name}]]</h1>
+                            </div>
+                            <div class="row pt-1 pb-2">
+                                <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 3px #706e6e;"></span>
+                                <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 3px #706e6e; padding-left: 2px;"></span>
+                                <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 3px #706e6e;padding-left: 2px;"></span>
+                                <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 3px #706e6e;padding-left: 2px;"></span>
+                                <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 3px #706e6e;padding-left: 2px;"></span>
+                            </div>
+
+                            <div class="row pt-3">
+                                <div style="font-size: 24px;">
+                                    <sup style="font-size: 16px;">đ</sup> [[${item.price}]]
+                                </div>
+                            </div>
+
+                            <div class="row pt-4">
+                                <div class="form-group">
+                                    <label style="padding-bottom:1px;" for="exampleFormControlSelect1"> Size 
+                                        <a href="#" data-toggle="modal" data-target="#sizeModal">
+                                            <span class="fa fa-question-circle-o ml-2" style="font-size:19px" 
+                                             data-toggle="tooltip" data-placement="top" title="Cách chọn size" ></span>
+                                        </a>
+                                    </label>
+
+                                    <!--size modal + table-->
+                                    <div class="modal fade" id="sizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">  
+                                                <div class="modal-header text-center">
+                                                    <h5 class="modal-title"><strong>Bảng Size Áo</strong> </h5>
+                                                </div>                                              
+                                                <table class="table table-bordered table-hover text-center table-striped">
+                                                    <thead class="table-warning">
+                                                        <tr style="font-family: Playfair Display;">
+                                                            <th>Size</th>
+                                                            <th>Chiều Cao</th>
+                                                            <th>Vòng 1</th>
+                                                            <th>Vòng 2</th>
+                                                            <th>Vòng 3</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>S</th>
+                                                            <th>146-151</th>
+                                                            <th>74-82</th>
+                                                            <th>63-66</th>
+                                                            <th>80-84</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>M</th>
+                                                            <th>152-157</th>
+                                                            <th>83-92</th>
+                                                            <th>67-71</th>
+                                                            <th>85-89.5</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>L</th>
+                                                            <th>158-163</th>
+                                                            <th>93-102</th>
+                                                            <th>72-76.5</th>
+                                                            <th>90-94.5</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>XL</th>
+                                                            <th>164-172</th>
+                                                            <th>103-112</th>
+                                                            <th>77-81.5</th>
+                                                            <th>95-99.5</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="ml-3 mb-2">
+                                                    <small class="muted" style="font-size: 14px;">*Số liệu chỉ mang tính tương đối</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    <!--/size modal + table-->
+                                    
+                                    <select class="form-control" id="exampleFormControlSelect1" style="width:110px">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row pt-2">
+                                <div class="form-group">
+                                    <label style="padding-bottom:1px;" for="exampleFormControlSelect1"> Số Lượng</label>
+                                    <input type="number" class="form-control" min=1 max=8 placeholder="1" style="width:110px">
+                                </div>
+                            </div>
+
+                            <div class="row pt-4">
+                                <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-success">Add to Cart</button>
+                            </div>
+                        </div>
+                        <!--thông tin-->
+                    </div>
+            </div>
+
+            
+        
+    </article>
+    <!--/article-->
+</body>
+</html>

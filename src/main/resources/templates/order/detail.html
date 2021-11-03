@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index.html :: dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Order Detail</title>
+</head>
+<body>
+	<div class="card ml-auto mt-4 mb-3" th:object="${order}"
+		style=" border:gray 1px solid; box-shadow: 3px 3px 3px rgb(229, 240, 169);">
+		<div class="card-header "
+			style="height: 50px;">
+			<h4
+				style="font-family: 'Lobster', cursive; color: rgb(121, 73, 19);">
+				<span class="fa fa-modx"></span> Order Detail : [[*{id}]]
+			</h4>
+		</div>
+		
+		 <div class="card-body">
+		 	<div class="form-group row justify-content-center">
+		 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">User :</label>
+		 		<div class="col-sm-9">
+		 			<div class="form-control">[[*{account.username}]]</div>
+		 		</div>
+		 	</div>
+		 	<div class="form-group row justify-content-center">
+		 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">Date :</label>
+		 		<div class="col-sm-9">
+		 			<div class="form-control">[[*{#dates.format(createdate, 'dd-MM-yyyy')}]]</div>
+		 		</div>
+		 	</div>
+		 	<div class="form-group row justify-content-center">
+		 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">Address :</label>
+		 		<div class="col-sm-9">
+		 			<div class="form-control">[[*{address}]]</div>
+		 		</div>
+		 	</div>
+		 </div>
+		 
+		 <table class="table table-hover table-bordered  mb-0">
+              <thead>
+                  <tr class="text-center" style="font-family:'Fjalla One', sans-serif; font-size: 16px;color:rgb(121, 73, 19)">
+                    <th style="width: 90px;">IMAGE</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                  </tr>
+              </thead>
+              <body>
+                 <tr th:each="d : *{orderdetails}">
+                    <td >
+                       <div style="width: 100%; overflow: hidden; height: 60px;">
+                           <img th:src="@{|/image/phukien/${d.product.image}|}" width="100%" alt="">
+                       </div>
+         	  			</td>
+                     <td class="text-center" style="vertical-align: middle;">[[${d.product.name}]]</td>
+                     <td class="text-center" style="vertical-align: middle;">[[${#numbers.formatDecimal(d.price,0,'COMMA',0,'POINT')}]]</td>
+                     <td class="text-center" style="vertical-align: middle;">[[${d.quantity}]]</td>
+                     <td  class="text-center" style="vertical-align: middle;">[[${#numbers.formatDecimal(d.price*d.quantity,0,'COMMA',0,'POINT')}]]</td>							          
+                  </tr>                
+              </body>
+          </table>
+            
+          <div class="card-footer ">
+          	<div class="row">
+          		 <div class="col-sm-7 mt-1 ml-5" style="font-size: 19px; font-family:Playfair Display ; color: rgb(173, 10, 10);">
+                      Total Pay : <span style="font-weight: bold;"> [[*{#numbers.formatDecimal(price,0,'COMMA',0,'POINT')}]] <sup>đ</sup></span>
+                  </div>
+                 	<div class="col-sm-4 mt-1">
+                 		<div class="ml-5" style="font-size: 19px; font-family:Playfair Display ; color: rgb(173, 10, 10);">
+                     	 Status : <span style="font-weight: bold;"> [[*{status}]] </span>
+                  	</div>
+                 	</div>
+          	</div>
+          </div>		
+	</div>
+</body>
+</html>

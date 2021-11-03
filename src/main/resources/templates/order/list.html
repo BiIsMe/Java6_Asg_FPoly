@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index.html :: dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Order List</title>
+</head>
+<body>
+	<div class="card ml-auto mt-4 mb-3" th:object="${order}"
+		style=" border:gray 1px solid; box-shadow: 3px 3px 3px rgb(229, 240, 169);">
+		<div class="card-header "
+			style="height: 50px;">
+			<h4
+				style="font-family: 'Lobster', cursive; color: rgb(121, 73, 19);">
+				<span class="fa fa-modx"></span> YOUR ORDERS
+			</h4>
+		</div>
+		
+		<table class="table table-hover table-bordered  mb-0">
+           <thead>
+               <tr class="text-center" style="font-family:'Fjalla One', sans-serif; font-size: 16px;color:rgb(121, 73, 19)">
+                   <th>ID</th>
+                   <th>DATE</th>
+                   <th>PRICE</th>
+                   <th>STATUS</th>
+                   <th>&nbsp;</th>
+               </tr>
+           </thead>
+           <body>
+           		<tr th:each="order : ${orders}" class="text-center">
+                   <td style="vertical-align: middle;">[[${order.id}]]</td>
+                   <td style="vertical-align: middle;">[[${#dates.format(order.createdate, 'dd-MM-yyyy')}]]</td>			
+                   <td style="vertical-align: middle;">[[${#numbers.formatDecimal(order.price,0,'COMMA',0,'POINT')}]]</td>			          
+                   <td style="vertical-align: middle;">[[${order.status}]]</td>
+                   <td style="vertical-align: middle;"><a th:href="@{|/order/detail/${order.id}|}"> <span class="fa fa-edit" style="color: brown;font-size: 19px;"></span></a></td>
+               	</tr>                
+           </body>
+       </table>
+	</div>
+</body>
+</html>

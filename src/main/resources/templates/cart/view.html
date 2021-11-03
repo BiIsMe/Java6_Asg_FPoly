@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index.html :: dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>CART INFO</title>
+</head>
+<body>
+	<div class="card ml-auto mt-4 mb-3"
+		style=" border:gray 1px solid; box-shadow: 3px 3px 3px rgb(229, 240, 169);">
+		<div class="card-header "
+			style="height: 50px;">
+			<h4
+				style="font-family: 'Lobster', cursive; color: rgb(121, 73, 19);">
+				<span class="fa fa-modx"></span> YOUR CART
+			</h4>
+		</div>
+		
+		 <table class="table table-condensed mb-0">
+                    <tr ng-repeat-start="item in cart.items">
+                        <td rowspan="2" style="width:140px">
+                            <div style="width:130px;height:130px;overflow: hidden;">
+                                <img src="/image/phukien/{{item.image}}" class="card-img">
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="mt-3" style="font-family: Playfair Display; color: #387f71; font-weight: bold; font-size: 18px;">
+                                {{item.name}}
+                            </div>
+                        </td>
+                        <td rowspan="2" style="vertical-align: middle;">
+                            <button class="btn btn-warning ml-3" style="margin-right:-27px" ng-click="cart.remove(item.id)"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    <tr ng-repeat-end>
+                        <td class="pt-3" style="font-family: Playfair Display;font-size: 18px;">{{item.price*item.quantity|currency:'':0}} <sup>đ</sup></td>
+                        <td class="pt-3">
+                            <form name="frmCart">
+                                <input ng-model="item.quantity" ng-change="cart.saveToLocalStorage()" type="number" class="form-control" min=1 style="height: 30px;width: 65px;font-size: 14px;">
+                            </form>
+                        </td>
+                    </tr>                                
+            </table>
+            
+            <div class="card-footer ">
+            	<div class="row">
+            		 <div class="col-sm-8 mt-1" style="font-size: 19px; font-family:Playfair Display ; color: rgb(173, 10, 10);">
+                        Total Pay : <span style="font-weight: bold;"> {{cart.amount|currency:'':0}} <sup>đ</sup></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <a th:href="@{/order/checkout}" >
+                        	<button class="btn btn-success ml-3" ng-disabled="cart.count==0" style="font-size: 14px;">Payment</button>
+                        </a>
+                        <button ng-click="cart.clear()" ng-disabled="cart.count==0"  class="btn btn-danger ml-3" style="font-size: 14px;">Clear All</button>
+                    </div>
+            	</div>
+            </div>		
+	</div>
+</body>
+</html>

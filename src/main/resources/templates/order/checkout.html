@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" 
+	th:replace="~{/layout/index.html :: dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Check Infor</title>
+</head>
+<body>
+		<div class="card ml-auto mt-4 mb-3"
+			style=" border:gray 1px solid; box-shadow: 3px 3px 3px rgb(229, 240, 169);">
+			<div class="card-header "
+				style="height: 50px;">
+				<h4
+					style="font-family: 'Lobster', cursive; color: rgb(121, 73, 19);">
+					<span class="fa fa-modx"></span> CHECK INFOMATION
+				</h4>
+			</div>
+			
+			 <div class="card-body">
+			 	<div class="form-group row justify-content-center">
+			 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">User :</label>
+			 		<div class="col-sm-9">
+			 			<div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+			 		</div>
+			 	</div>
+			 	<div class="form-group row justify-content-center">
+			 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">Date :</label>
+			 		<div class="col-sm-9">
+			 			<div class="form-control">{{order.createdate| date:'dd-MM-yyyy'}}</div>
+			 		</div>
+			 	</div>
+			 	<div class="form-group row justify-content-center">
+			 		<label class="col-sm-2 col-form-label" style="font-size: 19px;font-family:Playfair Display">Address :</label>
+			 		<div class="col-sm-9">
+			 			<textarea ng-model="order.address" id="myTextarea" class="form-control"></textarea>
+			 		</div>
+			 	</div>
+			 </div>
+			 
+			 <table class="table table-hover table-bordered  mb-0">
+	              <thead>
+	                  <tr class="text-center" style="font-family:'Fjalla One', sans-serif; font-size: 16px;color:rgb(121, 73, 19)">
+	                    <th style="width: 90px;">IMAGE</th>
+	                      <th>Name</th>
+	                      <th>Price</th>
+	                      <th>Quantity</th>
+	                      <th>Total</th>
+	                  </tr>
+	              </thead>
+	              <body>
+	                 <tr ng-repeat="item in cart.items">
+	                    <td >
+	                       <div style="width: 100%; overflow: hidden; height: 60px;">
+	                           <img src="/image/phukien/{{item.image}}" width="100%" alt="">
+	                       </div>
+	         	  			</td>
+	                     <td class="text-center" style="vertical-align: middle;">{{item.name}}</td>
+	                     <td class="text-center" style="vertical-align: middle;">{{item.price|currency:'':0}}</td>
+	                     <td class="text-center" style="vertical-align: middle;">{{item.quantity}}</td>
+	                     <td  class="text-center" style="vertical-align: middle;">{{item.price*item.quantity|currency:'':0}}</td>							          
+	                  </tr>                
+	              </body>
+	          </table>
+	            
+	            <div class="card-footer ">
+	            	<div class="row">
+	            		 <div class="col-sm-8 mt-1" style="font-size: 19px; font-family:Playfair Display ; color: rgb(173, 10, 10);">
+	                        Total Pay : <span style="font-weight: bold;"> {{cart.amount|currency:'':0}} <sup>đ</sup></span>
+	                    </div>
+	                    <div class="col-sm-4">
+	                       	<button ng-click="order.purchase()" class="btn btn-success" style="font-size: 14px;">Complete</button>            	
+	                        <a th:href="@{/cart/view}" >
+	                        	<button class="btn btn-warning ml-3" style="font-size: 14px;">Back to Cart</button>
+	                        </a>
+	                    </div>
+	            	</div>
+	            </div>		
+		</div>
+</body>
+</html>

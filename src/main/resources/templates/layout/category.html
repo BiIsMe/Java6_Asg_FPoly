@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="card ml-auto"
+		style="width: 90%; border:gray 1px solid; box-shadow: 3px 3px 3px rgb(229, 240, 169);">
+		<div class="card-header "
+			style="height: 50px;">
+			<h4
+				style="font-family: 'Lobster', cursive; color: rgb(121, 73, 19);">
+				<span class="fa fa-modx"></span> CATEGORY
+			</h4>
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<a th:href="@{/product/list?cid=xx01}" style="text-decoration: none">
+					<h2 style="font-family: 'Lobster', cursive; font-size: 22px; color: rgb(136, 79, 14);">Ao Dai</h2>
+				</a>
+			</li>
+			<li class="list-group-item">
+				<a href="/product/list?cid=xx02" style="text-decoration: none">
+					<h4 style="font-family: 'Lobster', cursive; font-size: 22px; color: rgb(136, 79, 14);">Trang Sức</h4>
+				</a>
+			</li>
+			<li class="list-group-item">
+				<a href="/product/list?cid=xx03" style="text-decoration: none">
+					<h4 style="font-family: 'Lobster', cursive; font-size: 22px; color: rgb(136, 79, 14);">Phụ Kiện</h4>
+				</a>
+			</li>
+			<li class="list-group-item">
+				<a href="/product/list" style="text-decoration: none">
+					<h4 style="font-family: 'Lobster', cursive; font-size: 22px; color: rgb(136, 79, 14);">Tất Cả</h4>
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

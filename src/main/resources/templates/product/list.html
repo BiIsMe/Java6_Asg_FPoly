@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fjalla+One&family=Lobster&family=Original+Surfer&family=Playfair+Display&display=swap" rel="stylesheet">
+	<title>Insert title here</title>
+	<style>
+		a{text-decoration: none}
+	</style>
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+	<div class="container mt-1">  
+		<header>
+	        <div class="row">
+	            <img th:src="@{/image/cover/header1.jpg}" style="width:100%;" alt="">
+	        </div>
+	    </header>
+	    
+	    <nav>
+	    	<div th:replace="~{/layout/menu.html}"></div>
+	    </nav>
+	         
+	    <div class="row justify-content-center mt-1">
+	        <div class="col-sm-12">
+	            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	                <ol class="carousel-indicators">
+	                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+	                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+	                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+	                </ol>
+	
+	                <div class="carousel-inner" style="height:350px">
+	                    <div class="carousel-item active">
+	                        <img th:src="@{/image/cover/tetcanht1i.jpg}" class="d-block w-100" alt="...">
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img th:src="@{/image/cover/moccam.jpg}" class="d-block w-100" alt="...">
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img th:src="@{/image/cover/vienhy.jpg}" class="d-block w-100" alt="...">
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img src="/image/cover/ynien.jpg" class="d-block w-100" alt="...">
+	                    </div>
+	                </div>
+	
+	                <a class="carousel-control-prev" data-target="#carouselExampleIndicators" role="button" data-slide="prev">
+	                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	                  <span class="sr-only">Previous</span>
+	                </a>
+	
+	                <a class="carousel-control-next" data-target="#carouselExampleIndicators" role="button" data-slide="next">
+	                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	                  <span class="sr-only">Next</span>
+	                </a>
+	              </div>
+	        </div>
+	    </div> 
+	    
+	    <div class="row mt-4">
+	    	<article class="col-sm-9">
+	    		<!-- liet ke -->
+	    		 <div class="row" >
+                        <div class="col-sm-12 ml-2" style="border-top:1px solid rgb(206, 202, 202);border-bottom: 1px solid rgb(206, 202, 202);">
+                            <div class="row mt-2 mb-2">
+                                <div class="col-sm-6 ml-3" style="color: rgb(121, 117, 117);font-size:17px">
+                                    [[${#arrays.length(page.content)}]] sản phẩm được tìm thấy
+                                </div>
+              
+                            </div>
+                        </div>
+                    </div>
+	    	
+	    	
+	    		<!-- list -->
+	    		<div class="row card-group mt-3" >
+                        <div th:each="p:${page.content}" class="col-sm-4 mb-3 mt-2 mb-3" id="bst" >
+                            <div class="card" style="box-shadow: 2px 2px 2px gray;">
+                                <div class="pic" style="height: 220px;overflow: hidden">
+                                    <a th:href="@{|/product/detail/${p.id}|}"><img th:src="@{|/image/phukien/${p.image}|}"  class="card-img-top" alt=""></a>
+                                </div>                       
+                                <div class="card-footer" style="height: 140px;">
+	                                <a th:href="@{|/product/detail/${p.id}|}" style="text-decoration: none">
+	                                    <h4 class="card-title text-center" style="font-family: Dancing Script; color: #387f71; font-weight: bold; font-size: 22px;">
+	                                        [[${p.name}]]
+	                                    </h4>
+                                    </a>
+                                    <div class="row justify-content-end" style="margin-top:-9px;padding-right:1px">
+                                        <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 2px #706e6e; font-size: 13px;"></span>
+                                        <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 2px #706e6e; font-size: 13px; padding-left: 2px;"></span>
+                                        <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 2px #706e6e; font-size: 13px; padding-left: 2px;"></span>
+                                        <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 2px #706e6e; font-size: 13px; padding-left: 2px;"></span>
+                                        <span class="fa fa-star	" style="color: yellow; text-shadow: 2px 2px 2px #706e6e; font-size: 13px; padding-left: 2px;"></span>
+                                    </div>
+                                    <div class="row justify-content-end mt-1" style="padding-right:1px;" >
+                                        <h6 style="font-family: Playfair Display; font-size: 18px;">
+                                        	[[${#numbers.formatDecimal(p.price,0,'COMMA',0,'POINT')}]] <sub>đ</sub>
+                                        </h6>
+                                    </div>
+                                    <div class="row ">                  
+                                        <div class="col text-center">
+                                            <button th:attr="ng-click=@{|cart.add(${p.id})|}" th:disabled="!${p.available}" 
+                                            	class="btn btn-light border rounded-circle" 
+                                                style="font-size: 17px; color:brown;box-shadow: 1px 1px 1px gray;background-color: rgb(237, 223, 207);">
+                                                  Add  <span class="fa fa-shopping-cart" style="font-size: 15px;"></span> Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    
+                    <div class="row justify-content-center">
+						<div class="col-sm-3 mr-2 text-center mt-4">
+							<ul class="pagination mb-1 "
+								style="font-size: 29px; font-weight: bolder;">
+								<li class="page-item mr-2 "><a th:href="@{/product/list?p=0}"
+									class="page-link btn btn-light"><span
+										class="fa fa-angle-double-left	"
+										style="color: #387f71; font-size: 20px;"></span></a></li>
+								<li class="page-item mr-2 "><a  th:href="@{|/product/list?p=${page.number-1 }|}"
+									class="page-link btn btn-light"><span
+										class="fa fa-angle-left"
+										style="color: #387f71; font-size: 20px;"></span></a></li>
+								<li class="page-item">
+									<div class="mr-2 mt-2"  style="color: #1f312e; font-size: 15px;">
+										[[${page.number +1}]]/[[${page.totalPages }]]
+									</div></li>
+								<li class="page-item mr-2 "><a   th:href="@{|/product/list?p=${page.number+1}|}"
+									class="btn page-link btn-light"><span
+										class="fa fa-angle-right"
+										style="color: #387f71; font-size: 20px;"></span></a></li>
+								<li class="page-item mr-2 "><a  th:href="@{|/product/list?p=${page.totalPages-1}|}"
+									class="btn page-link btn-light"><span
+										class="fa fa-angle-double-right"
+										style="color: #387f71; font-size: 20px;"></span></a></li>
+							</ul>
+						</div>
+					</div>
+	    	</article>
+	    	
+	    	<aside class="col-sm-3">
+	    		<div th:replace="~{/layout/category.html}"></div>
+	    	</aside>
+	    </div>
+	    <!--/carousel-->
+	    
+	    <footer class="row mt-4 alert alert-light bg-dark">
+			<div class="col-sm-12 text-center ">
+				XeoXo . All rights reserved.
+			</div>
+		</footer>          
+	</div>
+	
+	<script src="/js/shopping-cart-control.js"></script>
+</body>
+</html>
